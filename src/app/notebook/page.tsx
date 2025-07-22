@@ -8,10 +8,10 @@ import React, { JSX, useRef, useState } from "react";
 import Editor from "@/components/editor";
 import { useWebSocket } from "@/hooks/useWebSockets";
 
-const URL = "ws://localhost:8080";
-
 export default function Notebook(): JSX.Element {
   const onMessage = () => {};
+
+  const URL = "ws://localhost:8080";
 
   const { sendMessage, isOnline } = useWebSocket(URL, onMessage);
   return (

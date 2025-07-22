@@ -1,6 +1,8 @@
 import WebSocket, { WebSocketServer } from "ws";
 import { IncomingMessage } from "http";
 
+// TODO: save to a DB
+
 // Create WebSocket server on port 8080
 const wss = new WebSocketServer({ port: 8080 });
 
