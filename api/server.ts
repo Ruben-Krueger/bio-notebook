@@ -1,10 +1,12 @@
 import WebSocket, { WebSocketServer } from "ws";
 import { IncomingMessage } from "http";
-
-// TODO: save to a DB
+import { connectDB } from "./db";
 
 // Create WebSocket server on port 8080
 const wss = new WebSocketServer({ port: 8080 });
+
+// Connect to MongoDB
+connectDB();
 
 // Store connected clients
 const clients = new Set<WebSocket>();
