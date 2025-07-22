@@ -1,6 +1,20 @@
 "use client";
+import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js") // or whatever your SW file is named
+      .then((registration) => {
+        console.log("SW registered: ", registration);
+      })
+      .catch((registrationError) => {
+        console.log("SW registration failed: ", registrationError);
+      });
+  });
+}
 
 export default function Home() {
   const { push } = useRouter();
@@ -14,6 +28,13 @@ export default function Home() {
           }}
         >
           New notebook
+        </Button>
+        <Button
+          onClick={() => {
+            push("/experiment/");
+          }}
+        >
+          New experiment
         </Button>
       </main>
       <footer></footer>
